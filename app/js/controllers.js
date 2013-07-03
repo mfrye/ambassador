@@ -11,6 +11,16 @@ angular.module('ambassador.controllers', []).
 				name: "Kanye West",
 				slug: "kanye-west",
 				clicks: 200
+			},
+			{
+				name: "Bonobo",
+				slug: "bonobo",
+				clicks: 121
+			},
+			{
+				name: "Matt Zo",
+				slug: "matt-zo",
+				clicks: 3
 			}
 		];
   }])
@@ -53,6 +63,11 @@ angular.module('ambassador.controllers', []).
 
   }])
   .controller('LandingCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-		$scope.linkId = $routeParams.linkId;
+		
+		for(var i = 0; i < $scope.links.length; i++) {
+			if($scope.links[i].slug === $routeParams.linkId) {
+				$scope.link = $scope.links[i];
+			}
+		};
 
   }]);
