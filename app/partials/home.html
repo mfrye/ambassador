@@ -2,7 +2,6 @@
 	<div class="top-section">
 		<h1>Grow the web with referrals!</h1>
 		<form ng-submit="addLink()" class="form-inline">
-			<label>Add a link:</label>
 			<input ng-model="newLink" type="text" placeholder="Add new link">
 			<button class="btn" type="submit" value="add">Add Link</button>
 		</form>
@@ -19,10 +18,14 @@
 			<thead>
 			<tbody>
 				<tr ng-repeat="l in links">
-					<td><a href="#/landing/{{l.slug}}" ng-click="addClick(l)">{{l.name}}</td>
+					<td class="first-cell">
+						<a href="#/landing/{{l.slug}}" ng-click="addClick(l)" ng-hide="l.edit">{{l.name}}</a>
+						<input ng-model="l.name" type="text" placeholder="{{l.name}}" ng-show="l.edit"></td>
 					<td>{{l.clicks}}</td>
-					<td><button class="btn" ng-click="editLink(l)">Edit</button></td>
-					<td><button class="btn" ng-click="deleteLink(l)">Delete</button></td>
+					<td>
+						<button class="btn" ng-click="editItem(l)" ng-hide="l.edit">Edit</button>
+						<button class="btn btn-primary" ng-click="saveItem(l)" ng-show="l.edit">Save</button></td>
+					<td><button class="btn btn-danger" ng-click="deleteLink(l)">Delete</button></td>
 				</tr>
 			</tbody>
 		</table>
