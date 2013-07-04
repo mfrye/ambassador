@@ -47,7 +47,6 @@ angular.module('ambassador.controllers', []).
 		// Retrieve the object from storage
 		$scope.retrieveStorage = function() {
 			var retrievedArray = localStorage.getObject('linksArray');
-			console.log('retrievedArray: ', JSON.parse(retrievedArray));
 			$scope.links = JSON.parse(retrievedArray);
 		};
 		
@@ -116,7 +115,6 @@ angular.module('ambassador.controllers', []).
 			currentClick += 1;
 			l.clicks = currentClick;
 			$scope.$emit('save');
-			console.log(currentClick);
 		};
 
   }])
